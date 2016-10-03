@@ -1,0 +1,31 @@
+{
+  "name": "sdkphp",
+  "version": "1.0.0",
+  "description": "[logo]: https://github.com/RecastAI/SDK-NodeJs/blob/master/misc/logo-inline.png \"Recast.AI\"",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "doc": "./node_modules/apidoc/bin/apidoc -i src/ -o doc/"
+  },
+  "apidoc": {
+    "name": "php sdk API doc",
+    "version": "0.1.0",
+    "description": "apiDoc php sdk recast",
+    "apidoc": {
+      "title": "php sdk recast"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bgantelm/SDK-PHP.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bgantelm/SDK-PHP/issues"
+  },
+  "homepage": "https://github.com/bgantelm/SDK-PHP#readme"
+}

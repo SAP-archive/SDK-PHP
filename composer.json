@@ -1,0 +1,26 @@
+{
+  "name": "recastai/sdk-php",
+  "description": "The official PHP SDK Recast.ai",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Bruno",
+      "email": "bruno.gantelmi@recast.ai"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": "^5.3.3 || ^7.0",
+    "rmccue/requests": "dev-master",
+    "guzzlehttp/guzzle": "^6.2@dev"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "3.7.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "SDK-PHP\\": "src/",
+      "client\\": "tests/"
+    }
+  }
+}
