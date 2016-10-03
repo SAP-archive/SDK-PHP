@@ -25,6 +25,7 @@ class Response
       }
     }
 
+    $this->uuid = $res->{'uuid'};
     $this->language = $res->{'language'};
     $this->version = $res->{'version'};
     $this->timestamp = $res->{'timestamp'};
