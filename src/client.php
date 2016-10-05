@@ -6,9 +6,11 @@ require 'vendor/autoload.php';
 use response;
 use Requests;
 use constants;
+use conversation;
 
 require 'constants.php';
 require 'response.php';
+require 'conversation.php';
 
 class Client
 {
@@ -45,11 +47,10 @@ class Client
       return('Token is missing');
     } else {
       $headers = array('Content-Type' => 'application/json', 'Authorization' => "Token " . $token);
-      $response = file_get_contents("test.json");
 
       $res = $this->requestPrivate(constants\Constants::API_ENDPOINT, $headers, $params);
       // return ($res);
-      return(new response\Response($response));
+      return(new response\Response($res));
     }
   }
 
@@ -138,8 +139,31 @@ class Client
         ];
         $res = $this->requestFilePrivate($url, $params);
       }
-       $body = (string) $res->getBody();
-       return(new response\Response($body));
+       return(new response\Response($res));
+    }
+  }
+  public function textConverse($text, $converse_token=null, $options=null) {
+    if (!$options) {
+      $token = $this->token;
+    } else {
+      $token = $options['token'];
+    }
+
+    if ($this->language) {
+      $params = array('text' => $text, 'language' => $this->language, 'converse_token' => $converse_token);
+    } else {
+      $params = array('text' => $text, 'converse_token' => $converse_token);
+    }
+
+    if (!$token) {
+      return('Token is missing');
+    } else {
+      $headers = array('Content-Type' => 'application/json', 'Authorization' => "Token " . $token);
+      // $response = file_get_contents("test.json");
+
+      $res = $this->requestPrivate(constants\Constants::API_ENDPOINT_CONVERSATION, $headers, $params);
+      // return ($res);
+      return(new conversation\Conversation(($res)));
     }
   }
 }

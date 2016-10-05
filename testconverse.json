@@ -1,0 +1,3 @@
+{
+  "body": "{\"results\":{\"source\":\"hello\",\"replies\":[\"Salut\",\"Need location please\"],\"action\":{\"slug\":\"greetings\",\"done\":true,\"reply\":\"Salut\"},\"next_actions\":[{\"slug\":\"capitals\",\"done\":false,\"reply\":\"Need location please\"}],\"memory\":{\"loc\":null},\"entities\":{},\"intents\":[{\"slug\":\"greetings\",\"confidence\":0.99}],\"converse_token\":\"f6362f5ded83031d42c2d02d954359f9\",\"language\":\"en\",\"timestamp\":\"2016-10-05T12:07:30.907Z\",\"status\":200},\"message\":\"Converses rendered with success\"}"
+}

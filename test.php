@@ -1,16 +1,19 @@
 <?php
-$data = array ('foo' => 'bar', 'bar' => 'baz');
-$data = http_build_query($data);
+use client\Client;
+use conversation\Conversation;
 
-$context_options = array (
-        'http' => array (
-            'method' => 'POST',
-            'header'=> "Content-type: application/x-www-form-urlencoded\r\n"
-                . "Content-Length: " . strlen($data) . "\r\n",
-            'content' => $data
-            )
-        );
+require './src/client.php';
+// require './src/conversation.php';
+$client = new Client('6c9d786cb66f8961f65625984fd0d897', 'en');
 
-$context = context_create_stream($context_options);
-$fp = fopen('https://url', 'r', false, $context);
+ $res = $client->textRequest('hello');
+$key = (object) [
+        'loc' => 'blabla',
+      ];
+// $lol = $res->memory();
+// var_dump($lol);
+$nextMatch = $res->intent();
+var_dump($nextMatch);
+// // Do your code..
+
 ?>
