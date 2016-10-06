@@ -30,7 +30,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase {
     $res = new conversation\Conversation($res2);
 
 
-    $this->assertEquals($res->converseToken, $lol->results->converse_token);
+    $this->assertEquals($res->conversationToken, $lol->results->conversation_token);
     $this->assertEquals($res->replies, $lol->results->replies);
     $this->assertEquals($res->action, $lol->results->action);
     $this->assertEquals($res->nextActions, $lol->results->next_actions);

@@ -15,7 +15,8 @@ class Conversation
     $this->action = $res->{'results'}->{'action'};
     $this->nextActions = $res->{'results'}->{'next_actions'};
     $this->memory = $res->{'results'}->{'memory'};
-    $this->converseToken = $res->{'results'}->{'converse_token'};
+    $this->conversationToken = $res->{'results'}->{'conversation_token'};
+    var_dump($this->conversationToken);
   }
 
   /**
@@ -99,9 +100,8 @@ class Conversation
   * Returns the memory updated
   * @return {object}: the memory updated
   */
-  static public function setMemory($token, $converse_token, $memory) {
-    $memo = json_encode($memory);
-    $params = array('converse_token' => $converse_token, 'memory' => $memo);
+  static public function setMemory($token, $conversation_token, $memory) {
+    $params = array('conversation_token' => $conversation_token, 'memory' => $memory);
     $headers = array('Content-Type' => 'application/json', 'Authorization' => "Token " . $token);
 
     $request = Requests::put(constants\Constants::API_ENDPOINT_CONVERSATION, $headers, json_encode($params));
@@ -113,16 +113,15 @@ class Conversation
   * Reset the memory of the conversation
   * @return {object}: the updated memory
   */
-  static public function resetMemory($token, $converse_token, $alias=null) {
+  static public function resetMemory($token, $conversation_token, $alias=null) {
     $headers = array('Content-Type' => 'application/json', 'Authorization' => "Token " . $token);
     if ($alias === null) {
-      $params = array('converse_token' => $converse_token);
+      $params = array('conversation_token' => $conversation_token);
     } else {
       $memory = (object) [
         $alias => null
       ];
-      $memo = json_encode($memory);
-      $params = array('converse_token' => $converse_token, 'memory' => $memo);
+      $params = array('conversation_token' => $conversation_token, 'memory' => $memory);
     }
     $request = Requests::put(constants\Constants::API_ENDPOINT_CONVERSATION, $headers, json_encode($params));
     return ($request);
@@ -132,7 +131,7 @@ class Conversation
   * Reset the conversation
   * @return {object}: the updated memory
   */
-  static public function resetConversation($token, $converse_token) {
+  static public function resetConversation($token, $conversation_token) {
     $curl = curl_init();
 
     curl_setopt_array($curl, array(
@@ -143,7 +142,7 @@ class Conversation
       CURLOPT_TIMEOUT => 30,
       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
       CURLOPT_CUSTOMREQUEST => "DELETE",
-      CURLOPT_POSTFIELDS => "converse_token=" . $converse_token,
+      CURLOPT_POSTFIELDS => "conversation_token=" . $conversation_token,
       CURLOPT_HTTPHEADER => array(
         "authorization: Token " . $token,
         "cache-control: no-cache",

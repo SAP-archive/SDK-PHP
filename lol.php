@@ -5,7 +5,7 @@ $request = new http\Client\Request;
 
 $body = new http\Message\Body;
 $body->append(new http\QueryString(array(
-  'converse_token' => 'f6362f5ded83031d42c2d02d954359f9'
+  'conversation_token' => 'f6362f5ded83031d42c2d02d954359f9'
 )));
 
 $request->setRequestUrl('https://api-staging.recast.ai/v2/converse');

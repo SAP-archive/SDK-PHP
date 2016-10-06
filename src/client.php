@@ -142,7 +142,7 @@ class Client
        return(new response\Response($res));
     }
   }
-  public function textConverse($text, $converse_token=null, $options=null) {
+  public function textConverse($text, $conversation_token=null, $options=null) {
     if (!$options) {
       $token = $this->token;
     } else {
@@ -150,9 +150,9 @@ class Client
     }
 
     if ($this->language) {
-      $params = array('text' => $text, 'language' => $this->language, 'converse_token' => $converse_token);
+      $params = array('text' => $text, 'language' => $this->language, 'conversation_token' => $conversation_token);
     } else {
-      $params = array('text' => $text, 'converse_token' => $converse_token);
+      $params = array('text' => $text, 'conversation_token' => $conversation_token);
     }
 
     if (!$token) {
