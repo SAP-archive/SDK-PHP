@@ -16,7 +16,6 @@ class Conversation
     $this->nextActions = $res->{'results'}->{'next_actions'};
     $this->memory = $res->{'results'}->{'memory'};
     $this->conversationToken = $res->{'results'}->{'conversation_token'};
-    var_dump($this->conversationToken);
   }
 
   /**
@@ -24,11 +23,7 @@ class Conversation
   * @return {String}: this first reply or null
   */
   public function reply() {
-    if ($this->replies[0]) {
-      return ($this->replies[0]);
-    }
-
-    return (null);
+    return (count($this->replies) > 0 ? $this->replies[0] : null);
   }
 
   /**
@@ -36,14 +31,7 @@ class Conversation
   * @return {String}: the concatenation of the replies
   */
   public function replies() {
-    $count = count($this->replies);
-    $res = [];
-
-    for ($i = 0; $i < $count ; $i++) {
-      $res[] = $this->replies[$i];
-    }
-
-    return ($res);
+    return ($this->replies);
   }
 
   /**
@@ -64,7 +52,17 @@ class Conversation
   */
   public function action() {
     if ($this->action) {
-      return ($this->action);
+      return ($this->action || null);
+    }
+  }
+
+  /**
+  * Returns the first nextActions whose name matches the parameter
+  * @return {Array}: returns an array of first nextActions, or null
+  */
+  public function nextAction() {
+    if ($this->nextActions) {
+      return ($this->nextActions[0]);
     }
 
     return (null);
@@ -76,10 +74,8 @@ class Conversation
   */
   public function nextActions() {
     if ($this->nextActions) {
-      return ($this->nextActions);
+      return ($this->nextActions || $res = []);
     }
-
-    return (null);
   }
 
   /**
@@ -90,8 +86,10 @@ class Conversation
   public function memory($name=null) {
     if ($name === null) {
       return ($this->memory);
-    } else {
+    } else if ($this->memory->$name) {
       return ($this->memory->$name);
+    } else {
+      return (null);
     }
   }
 
@@ -147,7 +145,6 @@ class Conversation
         "authorization: Token " . $token,
         "cache-control: no-cache",
         "content-type: application/x-www-form-urlencoded",
-        "postman-token: 10e90b87-e2a9-9dc9-00b9-10e76d750aec"
       ),
     ));
 

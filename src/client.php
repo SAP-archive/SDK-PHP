@@ -49,7 +49,6 @@ class Client
       $headers = array('Content-Type' => 'application/json', 'Authorization' => "Token " . $token);
 
       $res = $this->requestPrivate(constants\Constants::API_ENDPOINT, $headers, $params);
-      // return ($res);
       return(new response\Response($res));
     }
   }
@@ -119,7 +118,6 @@ class Client
             ],
           ]
         ];
-        $res = $this->requestFilePrivate($url, $params);
       } else {
         $params = [
           'headers' => [
@@ -137,15 +135,15 @@ class Client
             ],
           ]
         ];
-        $res = $this->requestFilePrivate($url, $params);
       }
+      $res = $this->requestFilePrivate($url, $params);
        return(new response\Response($res));
     }
   }
   public function textConverse($text, $conversation_token=null, $options=null) {
-    if (!$options) {
+    if ($options === null) {
       $token = $this->token;
-    } else {
+    } else if ($options['token']) {
       $token = $options['token'];
     }
 
@@ -159,10 +157,8 @@ class Client
       return('Token is missing');
     } else {
       $headers = array('Content-Type' => 'application/json', 'Authorization' => "Token " . $token);
-      // $response = file_get_contents("test.json");
-
       $res = $this->requestPrivate(constants\Constants::API_ENDPOINT_CONVERSATION, $headers, $params);
-      // return ($res);
+
       return(new conversation\Conversation(($res)));
     }
   }

@@ -14,35 +14,35 @@ require './src/client.php';
 class ClientTest extends \PHPUnit_Framework_TestCase {
 
   public function testClientClassWithoutLanguage() {
-    $token = '4d416c43f41a1fa809db7932cae854c1';
+    $token = 'TestToken';
     $language = 'en';
 
     $this->assertInstanceOf('client\Client', new client\Client($token, null));
   }
 
   public function testClientClassWithoutToken() {
-    $token = '4d416c43f41a1fa809db7932cae854c1';
+    $token = 'TestToken';
     $language = 'en';
 
     $this->assertInstanceOf('client\Client', new client\Client(null, $language));
   }
 
   public function testClientClassWithoutTokenAndLanguage() {
-    $token = '4d416c43f41a1fa809db7932cae854c1';
+    $token = 'TestToken';
     $language = 'en';
 
     $this->assertInstanceOf('client\Client', new client\Client());
   }
 
   public function testClientClassWithTokenAndLanguage() {
-    $token = '4d416c43f41a1fa809db7932cae854c1';
+    $token = 'TestToken';
     $language = 'en';
 
     $this->assertInstanceOf('client\Client', new client\Client($token, $language));
   }
 
   public function testClientClassIfAttributesAreOkay() {
-    $token = '4d416c43f41a1fa809db7932cae854c1';
+    $token = 'TestToken';
     $language = 'en';
     $client = new client\Client($token, $language);
 
@@ -57,7 +57,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase {
     fclose ($fp);
 
     $res2 = json_decode ($contenu_du_fichier);
-    $token = '4d416c43f41a1fa809db7932cae854c1';
+    $token = 'TestToken';
     $language = 'en';
 
     $stub = $this->getMockBuilder('client\Client')
@@ -86,7 +86,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase {
     fclose ($fp);
     $res2 = json_decode ($contenu_du_fichier);
     $file = './file.wav';
-    $token = '4d416c43f41a1fa809db7932cae854c1';
+    $token = 'TestToken';
     $language = 'en';
 
     $stub = $this->getMockBuilder('client\Client')

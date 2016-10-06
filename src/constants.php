@@ -4,7 +4,7 @@ namespace constants;
 
 class Constants
 {
-    const API_ENDPOINT = 'https://api-staging.recast.ai/v2/request';
+    const API_ENDPOINT = 'https://api.recast.ai/v2/request';
     const API_ENDPOINT_CONVERSATION = 'https://api-staging.recast.ai/v2/converse';
 
     const ACT_ASSERT = 'assert';
