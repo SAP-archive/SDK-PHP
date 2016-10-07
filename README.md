@@ -9,8 +9,8 @@ Recast.AI official SDK in PHP
 ## Synospis
 
 This module is a wrapper around the [Recast.AI](https://recast.ai) API, and allows you to:
-* [build a bot](https://github.com/RecastAI/SDK-NodeJS/wiki/Build-your-bot)
-* [analyze your text](https://github.com/RecastAI/SDK-NodeJS/wiki/Analyse-text)
+* [build a bot](https://github.com/RecastAI/SDK-PHP/wiki/Build-your-bot)
+* [analyze your text](https://github.com/RecastAI/SDK-PHP/wiki/Analyse-text)
 
 ## Installation
 
@@ -20,17 +20,17 @@ composer require recastai/sdk-php
 
 ## Documentation
 
-You can find the full documentation [here](https://github.com/RecastAI/SDK-NodeJS/wiki).
+You can find the full documentation [here](https://github.com/RecastAI/SDK-PHP/wiki).
 
 ## Specs
 
 This module contains 5 classes, as follows:
 
-* [Client](https://github.com/RecastAI/SDK-NodeJS/wiki/Class-Client) is the client allowing you to make requests.
-* [Conversation](https://github.com/RecastAI/SDK-NodeJS/wiki/Class-Conversation) wraps the response from a call to [Recast.AI](https://recast.ai) API with the textConverse Client method.
-* [Response](https://github.com/RecastAI/SDK-NodeJS/wiki/Class-Response) wraps the response from a call to [Recast.AI](https://recast.ai) API with the textRequest or fileRequest Client methods.
-* [Entity](https://github.com/RecastAI/SDK-NodeJS/wiki/Class-Entity) represents an entity extracted from an input.
-* [RecastError](https://github.com/RecastAI/SDK-NodeJS/wiki/Class-RecastError) is the error returned by the module.
+* [Client](https://github.com/RecastAI/SDK-PHP/wiki/Class-Client) is the client allowing you to make requests.
+* [Conversation](https://github.com/RecastAI/SDK-PHP/wiki/Class-Conversation) wraps the response from a call to [Recast.AI](https://recast.ai) API with the textConverse Client method.
+* [Response](https://github.com/RecastAI/SDK-PHP/wiki/Class-Response) wraps the response from a call to [Recast.AI](https://recast.ai) API with the textRequest or fileRequest Client methods.
+* [Entity](https://github.com/RecastAI/SDK-PHP/wiki/Class-Entity) represents an entity extracted from an input.
+* [RecastError](https://github.com/RecastAI/SDK-PHP/wiki/Class-RecastError) is the error returned by the module.
 
 ## More
 
