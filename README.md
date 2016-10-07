@@ -30,7 +30,6 @@ This module contains 5 classes, as follows:
 * [Conversation](https://github.com/RecastAI/SDK-PHP/wiki/Class-Conversation) wraps the response from a call to [Recast.AI](https://recast.ai) API with the textConverse Client method.
 * [Response](https://github.com/RecastAI/SDK-PHP/wiki/Class-Response) wraps the response from a call to [Recast.AI](https://recast.ai) API with the textRequest or fileRequest Client methods.
 * [Entity](https://github.com/RecastAI/SDK-PHP/wiki/Class-Entity) represents an entity extracted from an input.
-* [RecastError](https://github.com/RecastAI/SDK-PHP/wiki/Class-RecastError) is the error returned by the module.
 
 ## More
 
