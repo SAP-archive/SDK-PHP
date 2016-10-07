@@ -31,9 +31,9 @@ class Client
    */
   public function textRequest($text, $options=null)
   {
-    if (!$options) {
+    if ($options === null) {
       $token = $this->token;
-    } else {
+    } else if ($options['token']) {
       $token = $options['token'];
     }
 
@@ -94,9 +94,9 @@ class Client
    */
   public  function fileRequest($file, $options=null)
   {
-    if (!$options) {
+    if ($options === null) {
       $token = $this->token;
-    } else {
+    } else if ($options['token']) {
       $token = $options['token'];
     }
 

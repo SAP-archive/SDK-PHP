@@ -52,8 +52,8 @@ class ClientTest extends \PHPUnit_Framework_TestCase {
 
   public function testtextRequestIfAllOkay() {
 
-    $fp = fopen ("test.json", "r");
-    $contenu_du_fichier = fread ($fp, filesize('test.json'));
+    $fp = fopen ("./tests/test.json", "r");
+    $contenu_du_fichier = fread ($fp, filesize('./tests/test.json'));
     fclose ($fp);
 
     $res2 = json_decode ($contenu_du_fichier);
@@ -81,8 +81,8 @@ class ClientTest extends \PHPUnit_Framework_TestCase {
   }
 
   public function testfileRequestIfAllOkay() {
-    $fp = fopen ("test.json", "r");
-    $contenu_du_fichier = fread ($fp, filesize('test.json'));
+    $fp = fopen ("./tests/test.json", "r");
+    $contenu_du_fichier = fread ($fp, filesize('./tests/test.json'));
     fclose ($fp);
     $res2 = json_decode ($contenu_du_fichier);
     $file = './file.wav';

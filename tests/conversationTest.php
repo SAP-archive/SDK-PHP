@@ -12,8 +12,8 @@ use conversation;
 class ResponseTest extends \PHPUnit_Framework_TestCase {
 
   public function testConversationClassWithAllOkay() {
-    $fp = fopen ("testconverse.json", "r");
-    $contenu_du_fichier = fread ($fp, filesize('testconverse.json'));
+    $fp = fopen ("./tests/testconverse.json", "r");
+    $contenu_du_fichier = fread ($fp, filesize('./tests/testconverse.json'));
     fclose ($fp);
 
     $json = json_decode ($contenu_du_fichier);
@@ -21,8 +21,8 @@ class ResponseTest extends \PHPUnit_Framework_TestCase {
   }
 
   public function testConversationClassAttributes() {
-    $fp = fopen ("testconverse.json", "r");
-    $contenu_du_fichier = fread ($fp, filesize('testconverse.json'));
+    $fp = fopen ("./tests/testconverse.json", "r");
+    $contenu_du_fichier = fread ($fp, filesize('./tests/testconverse.json'));
     fclose ($fp);
 
     $res2 = json_decode ($contenu_du_fichier);
@@ -38,8 +38,8 @@ class ResponseTest extends \PHPUnit_Framework_TestCase {
   }
 
   public function testResponseClassMethods() {
-    $fp = fopen ("testconverse.json", "r");
-    $contenu_du_fichier = fread ($fp, filesize('testconverse.json'));
+    $fp = fopen ("./tests/testconverse.json", "r");
+    $contenu_du_fichier = fread ($fp, filesize('./tests/testconverse.json'));
     fclose ($fp);
 
     $res2 = json_decode ($contenu_du_fichier);

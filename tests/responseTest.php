@@ -11,8 +11,8 @@ use Requests;
 class ResponseTest extends \PHPUnit_Framework_TestCase {
 
   public function testResponseClassWithAllOkay() {
-    $fp = fopen ("test.json", "r");
-    $contenu_du_fichier = fread ($fp, filesize('test.json'));
+    $fp = fopen ("./tests/test.json", "r");
+    $contenu_du_fichier = fread ($fp, filesize('./tests/test.json'));
     fclose ($fp);
 
     $json = json_decode ($contenu_du_fichier);
@@ -20,8 +20,8 @@ class ResponseTest extends \PHPUnit_Framework_TestCase {
   }
 
   public function testResponseClassAttributes() {
-    $fp = fopen ("test.json", "r");
-    $contenu_du_fichier = fread ($fp, filesize('test.json'));
+    $fp = fopen ("./tests/test.json", "r");
+    $contenu_du_fichier = fread ($fp, filesize('./tests/test.json'));
     fclose ($fp);
 
     $res2 = json_decode ($contenu_du_fichier);
@@ -45,8 +45,8 @@ class ResponseTest extends \PHPUnit_Framework_TestCase {
 
   public function testResponseClassMethods() {
 
-    $fp = fopen ("test.json", "r");
-    $contenu_du_fichier = fread ($fp, filesize('test.json'));
+    $fp = fopen ("./tests/test.json", "r");
+    $contenu_du_fichier = fread ($fp, filesize('./tests/test.json'));
     fclose ($fp);
 
     $res2 = json_decode ($contenu_du_fichier);
