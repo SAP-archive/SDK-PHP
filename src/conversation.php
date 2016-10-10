@@ -39,7 +39,7 @@ class Conversation
   * @return {String}: the concatenation of the replies
   */
   public function joinedReplies($separator=' ') {
-    return ($this->replies ? join($separator, $this->replies) : null)
+    return ($this->replies ? join($separator, $this->replies) : null);
   }
 
   /**
