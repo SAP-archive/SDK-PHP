@@ -74,7 +74,7 @@ class Conversation
   public function memory($name=null) {
     if ($name === null) {
       return ($this->memory);
-    } else if (array_key_exists($this->memory, $name)) {
+    } else if (array_key_exists($name, $this->memory)) {
       return ($this->memory->$name);
     } else {
       return (null);
