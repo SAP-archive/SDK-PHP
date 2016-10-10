@@ -33,7 +33,7 @@ class Client
   {
     if ($options === null) {
       $token = $this->token;
-    } else if ($options['token']) {
+    } else if (array_key_exists($options, 'token')) {
       $token = $options['token'];
     }
 
@@ -96,7 +96,7 @@ class Client
   {
     if ($options === null) {
       $token = $this->token;
-    } else if ($options['token']) {
+    } else if (array_key_exists($options, 'token')) {
       $token = $options['token'];
     }
 

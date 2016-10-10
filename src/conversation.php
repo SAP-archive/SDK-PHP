@@ -39,11 +39,7 @@ class Conversation
   * @return {String}: the concatenation of the replies
   */
   public function joinedReplies($separator=' ') {
-    if ($this->replies) {
-      return (join($separator, $this->replies));
-    }
-
-    return (null);
+    return ($this->replies ? join($separator, $this->replies) : null)
   }
 
   /**
@@ -51,9 +47,7 @@ class Conversation
   * @return {Array}: returns an array of action, or null
   */
   public function action() {
-    if ($this->action) {
-      return ($this->action || null);
-    }
+    return ($this->action || null);
   }
 
   /**
@@ -61,11 +55,7 @@ class Conversation
   * @return {Array}: returns an array of first nextActions, or null
   */
   public function nextAction() {
-    if ($this->nextActions) {
-      return ($this->nextActions[0]);
-    }
-
-    return (null);
+    return (count($this->nextAction) > 0 ? $this->nextAction[0] : []);
   }
 
   /**
@@ -73,9 +63,7 @@ class Conversation
   * @return {Array}: returns an array of nextActions, or null
   */
   public function nextActions() {
-    if ($this->nextActions) {
-      return ($this->nextActions || $res = []);
-    }
+      return ($this->nextActions || []);
   }
 
   /**
@@ -86,7 +74,7 @@ class Conversation
   public function memory($name=null) {
     if ($name === null) {
       return ($this->memory);
-    } else if ($this->memory->$name) {
+    } else if (array_key_exists($this->memory, $name)) {
       return ($this->memory->$name);
     } else {
       return (null);
