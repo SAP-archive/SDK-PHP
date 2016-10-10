@@ -69,7 +69,7 @@ class Conversation
   }
 
   /**
-  * Returns all the nextActions whose name matches the parameter
+  * Returns all nextActions
   * @return {Array}: returns an array of nextActions, or null
   */
   public function nextActions() {
