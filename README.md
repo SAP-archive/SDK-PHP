@@ -1,6 +1,6 @@
 # Recast.AI - SDK PHP
 
-[logo]: https://github.com/RecastAI/SDK-NodeJs/blob/master/misc/logo-inline.png "Recast.AI"
+[logo]: https://github.com/RecastAI/SDK-PHP/blob/develop/misc/logo-inline.png "Recast.AI"
 
 ![alt text][logo]
 
