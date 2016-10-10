@@ -55,12 +55,12 @@ class Conversation
   * @return {Array}: returns an array of first nextActions, or null
   */
   public function nextAction() {
-    return (count($this->nextAction) > 0 ? $this->nextAction[0] : []);
+    return (count($this->nextAction) > 0 ? $this->nextAction[0] : null);
   }
 
   /**
   * Returns all nextActions
-  * @return {Array}: returns an array of nextActions, or null
+  * @return {Array}: returns an array of nextActions, or []
   */
   public function nextActions() {
       return ($this->nextActions || []);
