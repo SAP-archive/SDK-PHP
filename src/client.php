@@ -6,9 +6,11 @@ require 'vendor/autoload.php';
 use response;
 use Requests;
 use constants;
+use conversation;
 
 require 'constants.php';
 require 'response.php';
+require 'conversation.php';
 
 class Client
 {
@@ -29,9 +31,9 @@ class Client
    */
   public function textRequest($text, $options=null)
   {
-    if (!$options) {
+    if ($options === null) {
       $token = $this->token;
-    } else {
+    } else if (array_key_exists('token', $options)) {
       $token = $options['token'];
     }
 
@@ -45,11 +47,9 @@ class Client
       return('Token is missing');
     } else {
       $headers = array('Content-Type' => 'application/json', 'Authorization' => "Token " . $token);
-      $response = file_get_contents("test.json");
 
       $res = $this->requestPrivate(constants\Constants::API_ENDPOINT, $headers, $params);
-      // return ($res);
-      return(new response\Response($response));
+      return(new response\Response($res));
     }
   }
 
@@ -94,9 +94,9 @@ class Client
    */
   public  function fileRequest($file, $options=null)
   {
-    if (!$options) {
+    if ($options === null) {
       $token = $this->token;
-    } else {
+    } else if (array_key_exists('token', $options)) {
       $token = $options['token'];
     }
 
@@ -118,7 +118,6 @@ class Client
             ],
           ]
         ];
-        $res = $this->requestFilePrivate($url, $params);
       } else {
         $params = [
           'headers' => [
@@ -136,10 +135,31 @@ class Client
             ],
           ]
         ];
-        $res = $this->requestFilePrivate($url, $params);
       }
-       $body = (string) $res->getBody();
-       return(new response\Response($body));
+      $res = $this->requestFilePrivate($url, $params);
+       return(new response\Response($res));
+    }
+  }
+  public function textConverse($text, $conversation_token=null, $options=null) {
+    if ($options === null) {
+      $token = $this->token;
+    } else if ($options['token']) {
+      $token = $options['token'];
+    }
+
+    if ($this->language) {
+      $params = array('text' => $text, 'language' => $this->language, 'conversation_token' => $conversation_token);
+    } else {
+      $params = array('text' => $text, 'conversation_token' => $conversation_token);
+    }
+
+    if (!$token) {
+      return('Token is missing');
+    } else {
+      $headers = array('Content-Type' => 'application/json', 'Authorization' => "Token " . $token);
+      $res = $this->requestPrivate(constants\Constants::API_ENDPOINT_CONVERSATION, $headers, $params);
+
+      return(new conversation\Conversation(($res)));
     }
   }
 }

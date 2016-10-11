@@ -11,26 +11,33 @@ use Requests;
 class ResponseTest extends \PHPUnit_Framework_TestCase {
 
   public function testResponseClassWithAllOkay() {
-    $response = file_get_contents("test.json");
+    $fp = fopen ("./tests/test.json", "r");
+    $contenu_du_fichier = fread ($fp, filesize('./tests/test.json'));
+    fclose ($fp);
 
-    $this->assertInstanceOf('response\Response', new response\Response($response));
+    $json = json_decode ($contenu_du_fichier);
+      $this->assertInstanceOf('response\Response', new response\Response($json));
   }
 
   public function testResponseClassAttributes() {
-    $response = (file_get_contents("test.json"));
-    $res2 = json_decode($response);
-    $res = new response\Response($response);
+    $fp = fopen ("./tests/test.json", "r");
+    $contenu_du_fichier = fread ($fp, filesize('./tests/test.json'));
+    fclose ($fp);
 
-    $lol = count($res->entities, COUNT_RECURSIVE);
+    $res2 = json_decode ($contenu_du_fichier);
+    $lol = json_decode($res2->body);
+    $res = new response\Response($res2);
 
-    $this->assertEquals($res->act, $res2->{'act'});
-    $this->assertEquals($res->type, $res2->{'type'});
-    $this->assertEquals($res->source, $res2->{'source'});
-    $this->assertEquals($res->sentiment, $res2->{'sentiment'});
-    $this->assertEquals($res->language, $res2->{'language'});
-    $this->assertEquals($res->version, $res2->{'version'});
-    $this->assertEquals($res->timestamp, $res2->{'timestamp'});
-    $this->assertEquals($lol, 4);
+    $count = count($res->entities, COUNT_RECURSIVE);
+
+    $this->assertEquals($res->act, $lol->results->{'act'});
+    $this->assertEquals($res->type, $lol->results->{'type'});
+    $this->assertEquals($res->source, $lol->results->{'source'});
+    $this->assertEquals($res->sentiment, $lol->results->{'sentiment'});
+    $this->assertEquals($res->language, $lol->results->{'language'});
+    $this->assertEquals($res->version, $lol->results->{'version'});
+    $this->assertEquals($res->timestamp, $lol->results->{'timestamp'});
+    $this->assertEquals($count, 4);
     $this->assertInstanceOf('entity\Entity', $res->entities[0]);
     $this->assertInternalType('array', $res->entities);
     $this->assertInternalType('array', $res->intents);
@@ -38,13 +45,18 @@ class ResponseTest extends \PHPUnit_Framework_TestCase {
 
   public function testResponseClassMethods() {
 
-    $response = (file_get_contents("test.json"));
-    $res2 = json_decode($response);
-    $res = new response\Response($response);
+    $fp = fopen ("./tests/test.json", "r");
+    $contenu_du_fichier = fread ($fp, filesize('./tests/test.json'));
+    fclose ($fp);
+
+    $res2 = json_decode ($contenu_du_fichier);
+    $lol = json_decode($res2->body);
+    $res = new response\Response($res2);
+
     $all = count($res->all('location'));
     $get = $res->get('location');
 
-    $this->assertEquals($res->intents[0], $res2->{'intents'}[0]);
+    $this->assertEquals($res->intent(), $lol->results->{'intents'}[0]);
     $this->assertEquals($all, 2);
     $this->assertEquals('location', $get->name);
 

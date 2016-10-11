@@ -2,48 +2,47 @@
 
 namespace client\Tests;
 
-use client;
-
 use response;
 use Requests;
 use constants;
 use GuzzleHttp\Psr7;
 use GuzzleHttp\Exception;
+use client;
 
 require './src/client.php';
 
 class ClientTest extends \PHPUnit_Framework_TestCase {
 
   public function testClientClassWithoutLanguage() {
-    $token = '4d416c43f41a1fa809db7932cae854c1';
+    $token = 'TestToken';
     $language = 'en';
 
     $this->assertInstanceOf('client\Client', new client\Client($token, null));
   }
 
   public function testClientClassWithoutToken() {
-    $token = '4d416c43f41a1fa809db7932cae854c1';
+    $token = 'TestToken';
     $language = 'en';
 
     $this->assertInstanceOf('client\Client', new client\Client(null, $language));
   }
 
   public function testClientClassWithoutTokenAndLanguage() {
-    $token = '4d416c43f41a1fa809db7932cae854c1';
+    $token = 'TestToken';
     $language = 'en';
 
     $this->assertInstanceOf('client\Client', new client\Client());
   }
 
   public function testClientClassWithTokenAndLanguage() {
-    $token = '4d416c43f41a1fa809db7932cae854c1';
+    $token = 'TestToken';
     $language = 'en';
 
     $this->assertInstanceOf('client\Client', new client\Client($token, $language));
   }
 
   public function testClientClassIfAttributesAreOkay() {
-    $token = '4d416c43f41a1fa809db7932cae854c1';
+    $token = 'TestToken';
     $language = 'en';
     $client = new client\Client($token, $language);
 
@@ -53,8 +52,12 @@ class ClientTest extends \PHPUnit_Framework_TestCase {
 
   public function testtextRequestIfAllOkay() {
 
-    $text = 'What is the weather in London tomorrow? And in Paris?';
-    $token = '4d416c43f41a1fa809db7932cae854c1';
+    $fp = fopen ("./tests/test.json", "r");
+    $contenu_du_fichier = fread ($fp, filesize('./tests/test.json'));
+    fclose ($fp);
+
+    $res2 = json_decode ($contenu_du_fichier);
+    $token = 'TestToken';
     $language = 'en';
 
     $stub = $this->getMockBuilder('client\Client')
@@ -64,10 +67,9 @@ class ClientTest extends \PHPUnit_Framework_TestCase {
 
     $stub->expects($this->once())
          ->method('requestPrivate')
-         ->will($this->returnValue(200));
-
-     $res = $stub->textRequest($text);
-     $this->assertEquals(200, $res->status);
+         ->will($this->returnValue($res2));
+     $res = $stub->textRequest($res2);
+     $this->assertEquals('200', $res->status);
 
   }
 
@@ -79,9 +81,12 @@ class ClientTest extends \PHPUnit_Framework_TestCase {
   }
 
   public function testfileRequestIfAllOkay() {
-
+    $fp = fopen ("./tests/test.json", "r");
+    $contenu_du_fichier = fread ($fp, filesize('./tests/test.json'));
+    fclose ($fp);
+    $res2 = json_decode ($contenu_du_fichier);
     $file = './file.wav';
-    $token = '4d416c43f41a1fa809db7932cae854c1';
+    $token = 'TestToken';
     $language = 'en';
 
     $stub = $this->getMockBuilder('client\Client')
@@ -91,10 +96,10 @@ class ClientTest extends \PHPUnit_Framework_TestCase {
 
     $stub->expects($this->once())
          ->method('requestFilePrivate')
-         ->will($this->returnValue(200));
+         ->will($this->returnValue($res2));
 
      $res = $stub->fileRequest($file);
-     $this->assertEquals(200, $res->status);
+     $this->assertEquals('200', $res->status);
 
   }
 

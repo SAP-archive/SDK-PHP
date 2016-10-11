@@ -4,3 +4,4 @@ composer.phar
 .DS_Store
 node_modules
 file.wav
+test.php

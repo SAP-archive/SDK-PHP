@@ -10,26 +10,27 @@ class Response
 {
   public function __construct($response)
   {
-    $res = json_decode($response);
+
+    $res = json_decode($response->body);
     $this->entities = [];
 
-    $this->act = $res->{'act'};
-    $this->type = $res->{'type'};
-    $this->source = $res->{'source'};
-    $this->intents = $res->{'intents'};
-    $this->sentiment = $res->{'sentiment'};
+    $this->act = $res->{'results'}->{'act'};
+    $this->type = $res->{'results'}->{'type'};
+    $this->source = $res->{'results'}->{'source'};
+    $this->intents = $res->{'results'}->{'intents'};
+    $this->sentiment = $res->{'results'}->{'sentiment'};
 
-    foreach ($res->{'entities'} as $key => $value) {
+    foreach ($res->{'results'}->{'entities'} as $key => $value) {
       foreach ($value as $i => $entity) {
         $this->entities[] = new entity\Entity($key, $entity);
       }
     }
 
-    $this->uuid = $res->{'uuid'};
-    $this->language = $res->{'language'};
-    $this->version = $res->{'version'};
-    $this->timestamp = $res->{'timestamp'};
-    $this->status = $res->{'status'};
+    $this->uuid = $res->{'results'}->{'uuid'};
+    $this->language = $res->{'results'}->{'language'};
+    $this->version = $res->{'results'}->{'version'};
+    $this->timestamp = $res->{'results'}->{'timestamp'};
+    $this->status = $res->{'results'}->{'status'};
   }
 
   /**
