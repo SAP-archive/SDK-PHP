@@ -6,6 +6,10 @@
     {
       "name": "Bruno",
       "email": "bruno.gantelmi@recast.ai"
+    },
+    {
+      "name": "Sylvain Jaune",
+      "email": "sylvain@hellocare.com"
     }
   ],
   "minimum-stability": "dev",
@@ -19,8 +23,8 @@
   },
   "autoload": {
     "psr-4": {
-      "SDK-PHP\\": "src/",
-      "client\\": "tests/"
+      "RecastAI\\": "src/",
+      "Tests\\RecastAI\\": "tests/"
     }
   }
 }
