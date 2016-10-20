@@ -14,15 +14,17 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     public function testResponseClassWithAllOkay()
     {
         $jsonResult = self::jsonResponse();
-        $this->assertInstanceOf('RecastAI\Response', new Response($jsonResult));
+        $res = (Object)[ "body" => ($jsonResult) ];
+        $this->assertInstanceOf('RecastAI\Response', new Response($res));
     }
 
     public function testResponseClassAttributes()
     {
         $jsonResult = self::jsonResponse();
-        $result = json_decode($jsonResult);
+        $res = (Object)[ "body" => ($jsonResult) ];
+        $result = json_decode($res->body);
 
-        $response = new Response($jsonResult);
+        $response = new Response($res);
 
         $count = count($response->entities, COUNT_RECURSIVE);
 
@@ -42,9 +44,10 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     public function testResponseClassMethods()
     {
         $jsonResult = self::jsonResponse();
-        $result = json_decode($jsonResult);
+        $res = (Object)[ "body" => ($jsonResult) ];
+        $result = json_decode($res->body);
 
-        $response = new Response($jsonResult);
+        $response = new Response($res);
 
         $all = count($response->all('location'));
         $get = $response->get('location');

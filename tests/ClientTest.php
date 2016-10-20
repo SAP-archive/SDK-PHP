@@ -50,6 +50,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     public function testTextRequestIfAllOkay()
     {
         $callResult = self::jsonResponse();
+        $res = (Object)[ "body" => ($callResult) ];
         $token = 'TestToken';
         $language = 'en';
 
@@ -60,9 +61,9 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $stub->expects($this->once())
             ->method('requestPrivate')
-            ->will($this->returnValue($callResult));
-
-        $response = $stub->textRequest($callResult);
+            ->will($this->returnValue($res));
+        $result = json_decode($res->body);
+        $response = $stub->textRequest($result->results->source);
 
         $this->assertEquals('200', $response->status);
     }

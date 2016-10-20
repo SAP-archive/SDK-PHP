@@ -8,23 +8,6 @@ namespace RecastAI;
  */
 class Response
 {
-    const ACT_ASSERT            = 'assert';
-    const ACT_COMMAND           = 'command';
-    const ACT_WH_QUERY          = 'wh-query';
-    const ACT_YN_QUERY          = 'yn-query';
-
-    const TYPE_ABBREVIATION     = 'abbr:';
-    const TYPE_ENTITY           = 'enty:';
-    const TYPE_DESCRIPTION      = 'desc:';
-    const TYPE_HUMAN            = 'hum:';
-    const TYPE_LOCATION         = 'loc:';
-    const TYPE_NUMBER           = 'num:';
-
-    const SENTIMENT_POSITIVE    = 'positive';
-    const SENTIMENT_NEUTRAL     = 'neutral';
-    const SENTIMENT_NEGATIVE    = 'negative';
-    const SENTIMENT_VPOSITIVE   = 'vpositive';
-    const SENTIMENT_VNEGATIVE   = 'vnegative';
 
     /**
      * Response constructor.
@@ -32,8 +15,8 @@ class Response
      */
     public function __construct($json)
     {
-        $response = json_decode($json);
-
+      var_dump($json);
+        $response = json_decode($json->body);
         $this->entities = [];
 
         $this->act = $response->results->act;
@@ -112,7 +95,7 @@ class Response
      */
     public function isAssert()
     {
-        return ($this->act === self::ACT_ASSERT);
+        return ($this->act === Constants::ACT_ASSERT);
     }
 
     /**
@@ -120,7 +103,7 @@ class Response
      */
     public function isCommand()
     {
-        return ($this->act === self::ACT_COMMAND);
+        return ($this->act === Constants::ACT_COMMAND);
     }
 
     /**
@@ -128,7 +111,7 @@ class Response
      */
     public function isWhQuery()
     {
-        return ($this->act === self::ACT_WH_QUERY);
+        return ($this->act === Constants::ACT_WH_QUERY);
     }
 
     /**
@@ -136,7 +119,7 @@ class Response
      */
     public function isYnQuery()
     {
-        return ($this->act === self::ACT_YN_QUERY);
+        return ($this->act === Constants::ACT_YN_QUERY);
     }
 
     /**
@@ -146,7 +129,7 @@ class Response
      */
     public function isAbbreviation()
     {
-        if (strstr($this->type, self::TYPE_ABBREVIATION)) {
+        if (strstr($this->type, Constants::TYPE_ABBREVIATION)) {
             return (true);
         }
         return (false);
@@ -157,7 +140,7 @@ class Response
      */
     public function isEntity()
     {
-        if (strstr($this->type, self::TYPE_ENTITY)) {
+        if (strstr($this->type, Constants::TYPE_ENTITY)) {
             return (true);
         }
         return (false);
@@ -168,7 +151,7 @@ class Response
      */
     public function isDescription()
     {
-        if (strstr($this->type, self::TYPE_DESCRIPTION)) {
+        if (strstr($this->type, Constants::TYPE_DESCRIPTION)) {
             return (true);
         }
         return (false);
@@ -179,7 +162,7 @@ class Response
      */
     public function isHuman()
     {
-        if (strstr($this->type, self::TYPE_HUMAN)) {
+        if (strstr($this->type, Constants::TYPE_HUMAN)) {
             return (true);
         }
         return (false);
@@ -190,7 +173,7 @@ class Response
      */
     public function isLocation()
     {
-        if (strstr($this->type, self::TYPE_LOCATION)) {
+        if (strstr($this->type, Constants::TYPE_LOCATION)) {
             return (true);
         }
         return (false);
@@ -201,7 +184,7 @@ class Response
      */
     public function isNumber()
     {
-        if (strstr($this->type, self::TYPE_NUMBER)) {
+        if (strstr($this->type, Constants::TYPE_NUMBER)) {
             return (true);
         }
         return (false);
@@ -215,7 +198,7 @@ class Response
 
     public function isPositive()
     {
-        return ($this->sentiment === self::SENTIMENT_POSITIVE);
+        return ($this->sentiment === Constants::SENTIMENT_POSITIVE);
     }
 
     /**
@@ -223,7 +206,7 @@ class Response
      */
     public function isNeutral()
     {
-        return ($this->sentiment === self::SENTIMENT_NEUTRAL);
+        return ($this->sentiment === Constants::SENTIMENT_NEUTRAL);
     }
 
     /**
@@ -231,7 +214,7 @@ class Response
      */
     public function isNegative()
     {
-        return ($this->sentiment === self::SENTIMENT_NEGATIVE);
+        return ($this->sentiment === Constants::SENTIMENT_NEGATIVE);
     }
 
     /**
@@ -239,7 +222,7 @@ class Response
      */
     public function isVPositive()
     {
-        return ($this->sentiment === self::SENTIMENT_VPOSITIVE);
+        return ($this->sentiment === Constants::SENTIMENT_VPOSITIVE);
     }
 
     /**
@@ -247,6 +230,6 @@ class Response
      */
     public function isVNegative()
     {
-        return ($this->sentiment === self::SENTIMENT_VNEGATIVE);
+        return ($this->sentiment === Constants::SENTIMENT_VNEGATIVE);
     }
 }

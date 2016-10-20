@@ -8,11 +8,11 @@ namespace RecastAI;
  */
 class Conversation
 {
-    const API_ENDPOINT_CONVERSATION = 'https://api.recast.ai/v2/converse';
-    
+
     public function __construct($json)
     {
-        $response = json_decode($json);
+        //  var_dump($json);
+        $response = json_decode($json->body);
 
         $this->replies = $response->results->replies;
         $this->action = $response->results->action;
@@ -101,7 +101,7 @@ class Conversation
         $params = array('conversation_token' => $conversation_token, 'memory' => $memory);
         $headers = array('Content-Type' => 'application/json', 'Authorization' => "Token " . $token);
 
-        $request = \Requests::put(self::API_ENDPOINT_CONVERSATION, $headers, json_encode($params));
+        $request = \Requests::put(Constants::API_ENDPOINT_CONVERSATION, $headers, json_encode($params));
         $res = (json_decode($request->body));
         return ($res->{'results'}->{'memory'});
     }
@@ -121,7 +121,7 @@ class Conversation
             ];
             $params = array('conversation_token' => $conversation_token, 'memory' => $memory);
         }
-        $request = \Requests::put(self::API_ENDPOINT_CONVERSATION, $headers, json_encode($params));
+        $request = \Requests::put(Constants::API_ENDPOINT_CONVERSATION, $headers, json_encode($params));
         return ($request);
     }
 
@@ -134,7 +134,7 @@ class Conversation
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => self::API_ENDPOINT_CONVERSATION,
+            CURLOPT_URL => Constants::API_ENDPOINT_CONVERSATION,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,

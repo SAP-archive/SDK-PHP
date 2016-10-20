@@ -14,15 +14,16 @@ class ConversationTest extends \PHPUnit_Framework_TestCase
     public function testConversationClassWithAllOkay()
     {
         $jsonResult = self::jsonResponse();
-        $this->assertInstanceOf('RecastAI\Conversation', new Conversation($jsonResult));
+        $res = (Object)[ "body" => ($jsonResult) ];
+        $this->assertInstanceOf('RecastAI\Conversation', new Conversation(($res)));
     }
 
     public function testConversationClassAttributes()
     {
         $jsonResult = self::jsonResponse();
-        $result = json_decode($jsonResult);
-
-        $conversation = new Conversation($jsonResult);
+        $res = (Object)[ "body" => ($jsonResult) ];
+        $conversation = new Conversation(($res));
+        $result = json_decode($res->body);
 
         $this->assertEquals($conversation->conversationToken, $result->results->conversation_token);
         $this->assertEquals($conversation->replies, $result->results->replies);
@@ -34,9 +35,10 @@ class ConversationTest extends \PHPUnit_Framework_TestCase
     public function testResponseClassMethods()
     {
         $jsonResult = self::jsonResponse();
-        $result = json_decode($jsonResult);
+        $res = (Object)[ "body" => ($jsonResult) ];
+        $result = json_decode($res->body);
 
-        $conversation = new Conversation($jsonResult);
+        $conversation = new Conversation($res);
 
         $this->assertEquals($conversation->reply(), $result->results->replies[0]);
         $this->assertEquals($conversation->joinedReplies(), join(' ', $result->results->replies));

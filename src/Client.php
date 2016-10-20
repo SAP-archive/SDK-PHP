@@ -2,14 +2,16 @@
 
 namespace RecastAI;
 
+require 'vendor/autoload.php';
+
+use Requests;
+
 /**
  * Class Client
  * @package RecastAI
  */
 class Client
 {
-    const API_ENDPOINT = 'https://api.recast.ai/v2/request';
-
     /**
      * Client constructor.
      * @param null $token
@@ -49,7 +51,7 @@ class Client
         } else {
             $headers = array('Content-Type' => 'application/json', 'Authorization' => "Token " . $token);
 
-            $res = $this->requestPrivate(self::API_ENDPOINT, $headers, $params);
+            $res = $this->requestPrivate(Constants::API_ENDPOINT, $headers, $params);
             return (new Response($res));
         }
     }
@@ -65,7 +67,7 @@ class Client
      */
     protected function requestPrivate($url, $headers, $params)
     {
-        $res = \Requests::post($url, $headers, json_encode($params));
+        $res = Requests::post($url, $headers, json_encode($params));
 
         return ($res);
     }
@@ -106,7 +108,7 @@ class Client
         if (!$token) {
             return ('Token is missing');
         } else {
-            $url = self::API_ENDPOINT;
+            $url = Constants::API_ENDPOINT;
 
             if (!$this->language) {
                 $params = [
@@ -168,7 +170,7 @@ class Client
             return ('Token is missing');
         } else {
             $headers = array('Content-Type' => 'application/json', 'Authorization' => "Token " . $token);
-            $res = $this->requestPrivate(Conversation::API_ENDPOINT_CONVERSATION, $headers, $params);
+            $res = $this->requestPrivate(Constants::API_ENDPOINT_CONVERSATION, $headers, $params);
 
             return (new Conversation(($res)));
         }
