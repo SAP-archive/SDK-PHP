@@ -15,7 +15,6 @@ class Response
      */
     public function __construct($json)
     {
-      var_dump($json);
         $response = json_decode($json->body);
         $this->entities = [];
 
