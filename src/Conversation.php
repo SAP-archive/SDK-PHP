@@ -54,7 +54,7 @@ class Conversation
      */
     public function action()
     {
-        return ($this->action || null);
+        return ($this->action ? $this->action : null);
     }
 
     /**
@@ -72,7 +72,7 @@ class Conversation
      */
     public function nextActions()
     {
-        return ($this->nextActions || []);
+        return ($this->nextActions ? $this->nextActions : []);
     }
 
     /**
@@ -103,7 +103,7 @@ class Conversation
 
         $request = \Requests::put(Constants::API_ENDPOINT_CONVERSATION, $headers, json_encode($params));
         $res = (json_decode($request->body));
-        return ($res->{'results'}->{'memory'});
+        return ($res->results->memory);
     }
 
     /**
