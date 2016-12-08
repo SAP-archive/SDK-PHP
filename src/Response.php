@@ -81,11 +81,7 @@ class Response
      */
     public function intent()
     {
-        if ($this->intents[0]) {
-            return ($this->intents[0]);
-        }
-
-        return (null);
+      return ($this->intents[0] || null);
     }
 
     /**
