@@ -19,6 +19,7 @@ class Response
         $response = json_decode($json->body);
         $this->entities = [];
 
+	$this->raw = $response->results;
         $this->act = $response->results->act;
         $this->type = $response->results->type;
         $this->source = $response->results->source;
