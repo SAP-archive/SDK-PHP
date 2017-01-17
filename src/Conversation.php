@@ -14,6 +14,7 @@ class Conversation
         //  var_dump($json);
         $response = json_decode($json->body);
 
+	$this->raw = $response->results;
         $this->replies = $response->results->replies;
         $this->action = $response->results->action;
         $this->nextActions = $response->results->next_actions;
