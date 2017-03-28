@@ -1,15 +1,11 @@
 {
   "name": "recastai/sdk-php",
-  "description": "The official PHP SDK Recast.ai",
+  "description": "The official PHP SDK Recast.AI",
   "license": "MIT",
   "authors": [
     {
-      "name": "Bruno",
-      "email": "bruno.gantelmi@recast.ai"
-    },
-    {
-      "name": "Sylvain Jaune",
-      "email": "sylvain@hellocare.com"
+      "name": "Marian André",
+      "email": "marian.andre@recast.ai"
     }
   ],
   "minimum-stability": "dev",
