@@ -1,7 +1,9 @@
 {
   "name": "recastai/sdk-php",
   "description": "The official PHP SDK Recast.AI",
+  "version": "3.0.0",
   "license": "MIT",
+  "homepage": "https://recast.ai",
   "authors": [
     {
       "name": "Marian André",
