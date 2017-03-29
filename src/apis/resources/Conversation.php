@@ -18,7 +18,7 @@ class Conversation
     $this->source = $responseBody->source;
     $this->replies = $responseBody->replies;
     $this->action = $responseBody->action;
-    $this->nextActions = $responseBody->next_actions;
+    $this->next_actions = $responseBody->next_actions;
     $this->memory = $responseBody->memory;
     $this->entities = $responseBody->entities;
     $this->intents = $responseBody->intents;

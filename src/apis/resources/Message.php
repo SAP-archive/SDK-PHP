@@ -18,7 +18,10 @@ class Message
     $this->content = $response->message->attachment->content;
     $this->type = $response->message->attachment->type;
     $this->conversationId = $response->message->conversation;
+    $this->recastToken = $token;
+    $this->chatId = $response->chatId;
     $this->senderId = $response->senderId;
+    $this->attachment = $response->message->attachment;
 
     $this->_messageStack = [];
   }
