@@ -1,35 +1,47 @@
-# Recast.AI - SDK PHP
-
-[logo]: https://github.com/RecastAI/SDK-PHP/blob/develop/misc/logo-inline.png "Recast.AI"
+[logo]: https://cdn.recast.ai/brand/recast-ai-logo-inline.png "Recast.AI"
 
 ![alt text][logo]
 
+# Recast.AI - SDK PHP
 Recast.AI official SDK in PHP
 
 ## Synospis
 
 This module is a wrapper around the [Recast.AI](https://recast.ai) API, and allows you to:
-* [build a bot](https://github.com/RecastAI/SDK-PHP/wiki/Build-your-bot)
-* [analyze your text](https://github.com/RecastAI/SDK-PHP/wiki/Analyse-text)
+* [Analyse your text](https://github.com/RecastAI/SDK-PHP/wiki/01---Analyse-text)
+* [Manage your conversation](https://github.com/RecastAI/SDK-PHP/wiki/02---Manage-conversation)
+* [Receive and send messages](https://github.com/RecastAI/SDK-PHP/wiki/03--Receive-and-send-messages)
+
 
 ## Installation
 
+Install the package using npm, as shown below:
 ```bash
 composer require recastai/sdk-php
 ```
 
-## Documentation
+You can now use the sdk in your code.
 
-You can find the full documentation [here](https://github.com/RecastAI/SDK-PHP/wiki).
+Using the entire SDK:
+```php
+<?php
+require_once __DIR__ . '/vendor/autoload.php';
 
-## Specs
+use RecastAI\Client;
 
-This module contains 5 classes, as follows:
+$client = new Client('YOUR_TOKEN');
+```
 
-* [Client](https://github.com/RecastAI/SDK-PHP/wiki/Class-Client) is the client allowing you to make requests.
-* [Conversation](https://github.com/RecastAI/SDK-PHP/wiki/Class-Conversation) wraps the response from a call to [Recast.AI](https://recast.ai) API with the textConverse Client method.
-* [Response](https://github.com/RecastAI/SDK-PHP/wiki/Class-Response) wraps the response from a call to [Recast.AI](https://recast.ai) API with the textRequest or fileRequest Client methods.
-* [Entity](https://github.com/RecastAI/SDK-PHP/wiki/Class-Entity) represents an entity extracted from an input.
+Extracting one single API:
+```php
+<?php
+require_once __DIR__ . '/vendor/autoload.php';
+
+use RecastAI\Client;
+
+$request = Client::Request('YOUR_TOKEN');
+$connect = Client::Connect('YOUR_TOKEN');
+```
 
 ## More
 
@@ -37,13 +49,13 @@ You can view the whole API reference at [man.recast.ai](https://man.recast.ai).
 
 ## Author
 
-Bruno Gantelmi, bruno.gantelmi@recast.ai
+Marian André, marian.andre@recast.ai
 
 You can follow us on Twitter at [@recastai](https://twitter.com/recastai) for updates and releases.
 
 ## License
 
-Copyright (c) [2016] [Recast.AI](https://recast.ai)
+Copyright (c) [2017] [Recast.AI](https://recast.ai)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
