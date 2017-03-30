@@ -4,10 +4,10 @@ namespace RecastAI;
 
 class Constants
 {
-  const REQUEST_ENDPOINT      = "https://api-staging.recast.ai/v2/request";
-  const CONVERSE_ENDPOINT     = "https://api-staging.recast.ai/v2/converse";
-  const CONVERSATION_ENDPOINT = "https://api-staging.recast.ai/connect/v1/messages";
-  const MESSAGE_ENDPOINT      = "https://api-staging.recast.ai/connect/v1/conversations/:conversation_id/messages";
+  const REQUEST_ENDPOINT      = "https://api.recast.ai/v2/request";
+  const CONVERSE_ENDPOINT     = "https://api.recast.ai/v2/converse";
+  const CONVERSATION_ENDPOINT = "https://api.recast.ai/connect/v1/messages";
+  const MESSAGE_ENDPOINT      = "https://api.recast.ai/connect/v1/conversations/:conversation_id/messages";
 
   const ACT_ASSERT    = "assert";
   const ACT_COMMAND   = "command";
