@@ -1,22 +1,21 @@
 {
   "name": "recastai/sdk-php",
-  "description": "The official PHP SDK Recast.ai",
+  "description": "The official PHP SDK Recast.AI",
+  "version": "3.0.0",
   "license": "MIT",
+  "homepage": "https://recast.ai",
   "authors": [
     {
-      "name": "Bruno",
-      "email": "bruno.gantelmi@recast.ai"
-    },
-    {
-      "name": "Sylvain Jaune",
-      "email": "sylvain@hellocare.com"
+      "name": "Marian André",
+      "email": "marian.andre@recast.ai"
     }
   ],
   "minimum-stability": "dev",
   "require": {
     "php": "^5.3.3 || ^7.0",
     "rmccue/requests": "^1.6.1",
-    "guzzlehttp/guzzle": "^6.2@dev"
+    "guzzlehttp/guzzle": "^6.2@dev",
+    "overtrue/phplint": "^0.2.0"
   },
   "require-dev": {
     "phpunit/phpunit": "3.7.*"
