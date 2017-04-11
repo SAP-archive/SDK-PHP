@@ -15,11 +15,10 @@ class Response
      */
     public function __construct($json)
     {
-      var_dump($json);
         $response = json_decode($json->body);
         $this->entities = [];
 
-	$this->raw = $response->results;
+        $this->raw = $response->results;
         $this->act = $response->results->act;
         $this->type = $response->results->type;
         $this->source = $response->results->source;
@@ -34,6 +33,7 @@ class Response
 
         $this->uuid = $response->results->uuid;
         $this->language = $response->results->language;
+        $this->processing_language = $response->results->processing_language;
         $this->version = $response->results->version;
         $this->timestamp = $response->results->timestamp;
         $this->status = $response->results->status;
@@ -82,11 +82,7 @@ class Response
      */
     public function intent()
     {
-        if ($this->intents[0]) {
-            return ($this->intents[0]);
-        }
-
-        return (null);
+      return ($this->intents[0] || null);
     }
 
     /**
