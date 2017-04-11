@@ -31,6 +31,7 @@ class Response
     }
 
     $this->language = $response->language;
+    $this->processing_language = $response->processing_language;
     $this->version = $response->version;
     $this->timestamp = $response->timestamp;
     $this->status = $response->status;
