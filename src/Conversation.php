@@ -14,12 +14,15 @@ class Conversation
         //  var_dump($json);
         $response = json_decode($json->body);
 
-	$this->raw = $response->results;
+        $this->raw = $response->results;
         $this->replies = $response->results->replies;
         $this->action = $response->results->action;
         $this->nextActions = $response->results->next_actions;
+        $this->sentiment = $response->results->sentiment;
         $this->memory = $response->results->memory;
         $this->conversationToken = $response->results->conversation_token;
+        $this->language = $response->results->language;
+        $this->processing_language = $response->results->processing_language;
     }
 
     /**
@@ -90,6 +93,49 @@ class Conversation
         } else {
             return (null);
         }
+    }
+
+    /**
+     * SENTIMENT HELPERS
+     * Returns whether or not the response sentiment corresponds to the checked one
+     * @return {boolean}: true or false
+     */
+
+    public function isPositive()
+    {
+        return ($this->sentiment === Constants::SENTIMENT_POSITIVE);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isNeutral()
+    {
+        return ($this->sentiment === Constants::SENTIMENT_NEUTRAL);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isNegative()
+    {
+        return ($this->sentiment === Constants::SENTIMENT_NEGATIVE);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isVPositive()
+    {
+        return ($this->sentiment === Constants::SENTIMENT_VPOSITIVE);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isVNegative()
+    {
+        return ($this->sentiment === Constants::SENTIMENT_VNEGATIVE);
     }
 
     /**
