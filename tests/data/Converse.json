@@ -5,6 +5,7 @@
       "Salut",
       "Need location please"
     ],
+    "sentiment": "neutral",
     "action": {
       "slug": "greetings",
       "done": true,
@@ -29,6 +30,7 @@
     ],
     "conversation_token": "f6362f5ded83031d42c2d02d954359f9",
     "language": "en",
+    "processing_language": "en",
     "timestamp": "2016-10-05T12:07:30.907Z",
     "status": 200
   },
