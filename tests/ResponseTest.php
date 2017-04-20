@@ -33,6 +33,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($response->source, $result->results->{'source'});
         $this->assertEquals($response->sentiment, $result->results->{'sentiment'});
         $this->assertEquals($response->language, $result->results->{'language'});
+        $this->assertEquals($response->processing_language, $result->results->{'processing_language'});
         $this->assertEquals($response->version, $result->results->{'version'});
         $this->assertEquals($response->timestamp, $result->results->{'timestamp'});
         $this->assertEquals($count, 4);

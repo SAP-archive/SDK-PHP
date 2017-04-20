@@ -21,9 +21,11 @@ class Conversation
     $this->next_actions = $responseBody->next_actions;
     $this->memory = $responseBody->memory;
     $this->entities = $responseBody->entities;
+    $this->sentiment = $responseBody->sentiment;
     $this->intents = $responseBody->intents;
     $this->conversation_token = $responseBody->conversation_token;
     $this->language = $responseBody->language;
+    $this->processing_language = $responseBody->processing_language;
     $this->version = $responseBody->version;
     $this->timestamp = $responseBody->timestamp;
     $this->status = $responseBody->status;
@@ -81,6 +83,49 @@ class Conversation
   public function nextActions()
   {
     return ($this->nextActions ? $this->nextActions : []);
+  }
+
+  /**
+  * SENTIMENT HELPERS
+  * Returns whether or not the response sentiment corresponds to the checked one
+  * @return {boolean}: true or false
+  */
+
+  public function isPositive()
+  {
+    return ($this->sentiment === \RecastAI\Constants::SENTIMENT_POSITIVE);
+  }
+
+  /**
+  * @return bool
+  */
+  public function isNeutral()
+  {
+    return ($this->sentiment === \RecastAI\Constants::SENTIMENT_NEUTRAL);
+  }
+
+  /**
+  * @return bool
+  */
+  public function isNegative()
+  {
+    return ($this->sentiment === \RecastAI\Constants::SENTIMENT_NEGATIVE);
+  }
+
+  /**
+  * @return bool
+  */
+  public function isVPositive()
+  {
+    return ($this->sentiment === \RecastAI\Constants::SENTIMENT_VPOSITIVE);
+  }
+
+  /**
+  * @return bool
+  */
+  public function isVNegative()
+  {
+    return ($this->sentiment === \RecastAI\Constants::SENTIMENT_VNEGATIVE);
   }
 
   /**

@@ -30,6 +30,9 @@ class ConversationTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($conversation->action, $result->results->action);
         $this->assertEquals($conversation->nextActions, $result->results->next_actions);
         $this->assertEquals($conversation->memory, $result->results->memory);
+        $this->assertEquals($conversation->language, $result->results->language);
+        $this->assertEquals($conversation->processing_language, $result->results->processing_language);
+        $this->assertEquals($conversation->sentiment, $result->results->sentiment);
     }
 
     public function testResponseClassMethods()
@@ -45,5 +48,10 @@ class ConversationTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($conversation->joinedReplies('\n'), join('\n', $result->results->replies));
         $this->assertEquals($conversation->memory(), $result->results->memory);
         $this->assertEquals($conversation->memory('loc'), $result->results->memory->loc);
+        $this->assertEquals($conversation->isVPositive(), false);
+        $this->assertEquals($conversation->isPositive(), false);
+        $this->assertEquals($conversation->isNeutral(), true);
+        $this->assertEquals($conversation->isNegative(), false);
+        $this->assertEquals($conversation->isVNegative(), false);
     }
 }
