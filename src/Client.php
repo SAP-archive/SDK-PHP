@@ -2,8 +2,6 @@
 
 namespace RecastAI;
 
-require 'vendor/autoload.php';
-
 /**
  * Class Client
  * @package RecastAI
