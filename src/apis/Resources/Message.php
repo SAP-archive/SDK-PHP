@@ -22,6 +22,7 @@ class Message
     $this->chatId = $response->chatId;
     $this->senderId = $response->senderId;
     $this->attachment = $response->message->attachment;
+    $this->data = $response->message->data;
 
     $this->_messageStack = [];
   }
