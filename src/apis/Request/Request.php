@@ -113,7 +113,6 @@ class Request
   public function dialogText($text, $conversation_id, $options = []) {
     $token = array_key_exists('token', $options) ? $options['token'] : $this->token;
     $language = array_key_exists('language', $options) ? $options['language'] : $this->language;
-    $memory = array_key_exists('memory', $options) ? $options['memory'] : NULL;
 
     if (count($token) < 1) {
       throw new \Exception('Error: Parameter token is missing');
