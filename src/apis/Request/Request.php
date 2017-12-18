@@ -144,8 +144,6 @@ class Request
       throw new \Exception('Error: API is not accessible: ' . $e->getMessage());
     }
 
-    $responseBody = json_decode($response->getBody()->getContents());
-
-    return new \RecastAI\apis\Resources\Conversation($token, $responseBody);
+    return json_decode($response->getBody()->getContents());
   }
 }
