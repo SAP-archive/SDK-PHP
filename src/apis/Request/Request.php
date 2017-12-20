@@ -143,6 +143,6 @@ class Request
       throw new \Exception('Error: API is not accessible: ' . $e->getMessage());
     }
 
-    return json_decode($response->getBody()->getContents());
+    return json_decode($response->getBody()->getContents())->results;
   }
 }
