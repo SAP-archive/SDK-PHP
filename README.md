@@ -8,9 +8,9 @@ Recast.AI official SDK in PHP
 ## Synospis
 
 This module is a wrapper around the [Recast.AI](https://recast.ai) API, and allows you to:
-* [Analyse your text](https://github.com/RecastAI/SDK-PHP/wiki/01---Analyse-text)
-* [Manage your conversation](https://github.com/RecastAI/SDK-PHP/wiki/02---Manage-conversation)
-* [Receive and send messages](https://github.com/RecastAI/SDK-PHP/wiki/03--Receive-and-send-messages)
+* [Analyse your text](https://github.com/RecastAI/SDK-PHP/wiki/Analyse-text)
+* [Manage your conversation](https://github.com/RecastAI/SDK-PHP/wiki/Manage-conversation)
+* [Receive and send messages](https://github.com/RecastAI/SDK-PHP/wiki/Receive-and-send-messages)
 
 
 ## Installation
