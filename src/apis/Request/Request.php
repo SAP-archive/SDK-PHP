@@ -51,7 +51,7 @@ class Request
     return new \RecastAI\apis\Resources\Response($responseBody);
   }
 
-  public function converseText($text, $options = [], $memory = [], $log_level = 0) {
+  public function converseText($text, $options = [], $memory = NULL, $log_level = 'info') {
     $token = array_key_exists('token', $options) ? $options['token'] : $this->token;
     $language = array_key_exists('language', $options) ? $options['language'] : $this->language;
     $conversation_token = array_key_exists('conversation_token', $options) ? $options['conversation_token'] : NULL;
