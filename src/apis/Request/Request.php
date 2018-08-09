@@ -62,13 +62,16 @@ class Request
     }
 
     $headers = ['Content-Type' => 'application/json', 'Authorization' => "Token " . $token];
-    $body = json_encode([
+    $body = [
       "text" => $text,
       "language" => $language,
       "conversation_token" => $conversation_token,
-      "memory" => $memory,
       "log_level" => $log_level,
-    ]);
+    ];
+		if ($memory) {
+			$body['memory'] = $memory;
+		}
+		$body = json_encode($body);
 
     $client = new \GuzzleHttp\Client();
 
