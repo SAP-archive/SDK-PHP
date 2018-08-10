@@ -117,7 +117,7 @@ class Conversation
   */
   public function isVPositive()
   {
-    return ($this->sentiment === \RecastAI\Constants::SENTIMENT_VPOSITIVE);
+    return ($this->sentiment === \RecastAI\Constants::SENTIMENT_VERY_POSITIVE);
   }
 
   /**
@@ -125,7 +125,7 @@ class Conversation
   */
   public function isVNegative()
   {
-    return ($this->sentiment === \RecastAI\Constants::SENTIMENT_VNEGATIVE);
+    return ($this->sentiment === \RecastAI\Constants::SENTIMENT_VERY_NEGATIVE);
   }
 
   /**

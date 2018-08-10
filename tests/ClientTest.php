@@ -47,7 +47,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($client->language, $language);
     }
 
-    public function testTextRequestIfAllOkay()
+    public function testAnalyseTextIfAllOkay()
     {
         $callResult = self::jsonResponse();
         $res = (Object)[ "body" => ($callResult) ];
@@ -63,49 +63,15 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             ->method('requestPrivate')
             ->will($this->returnValue($res));
         $result = json_decode($res->body);
-        $response = $stub->textRequest($result->results->source);
+        $response = $stub->request->analyseText($result->results->source);
 
         $this->assertEquals('200', $response->status);
     }
 
-    public function testTextRequestIfNoToken()
+    public function testAnalyseTextIfNoToken()
     {
         $client = new Client();
-        $res = $client->textRequest('Hello world');
-        $this->assertEquals($res, 'Token is missing');
-    }
-
-    public function testFileRequestIfAllOkay()
-    {
-        $callResult = self::jsonResponse();
-
-        $file = __DIR__ . '/data/file.wav';
-
-        if (!file_exists($file)) {
-             $this->markTestSkipped('Audio test file not found');
-        }
-
-        $token = 'TestToken';
-        $language = 'en';
-
-        $stub = $this->getMockBuilder('RecastAI\Client')
-            ->setConstructorArgs(array($token, $language))
-            ->setMethods(['requestFilePrivate'])
-            ->getMock();
-
-        $stub->expects($this->once())
-            ->method('requestFilePrivate')
-            ->will($this->returnValue($callResult));
-
-        $response = $stub->fileRequest($file);
-        $this->assertEquals('200', $response->status);
-    }
-
-    public function testFileRequestIfNoToken()
-    {
-        $client = new Client();
-
-        $res = $client->fileRequest(__DIR__ . '/data/file.wav');
+        $res = $client->request->analyseText('Hello world');
         $this->assertEquals($res, 'Token is missing');
     }
 }

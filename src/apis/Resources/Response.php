@@ -221,7 +221,7 @@ class Response
   */
   public function isVPositive()
   {
-    return ($this->sentiment === \RecastAI\Constants::SENTIMENT_VPOSITIVE);
+    return ($this->sentiment === \RecastAI\Constants::SENTIMENT_VERY_POSITIVE);
   }
 
   /**
@@ -229,6 +229,6 @@ class Response
   */
   public function isVNegative()
   {
-    return ($this->sentiment === \RecastAI\Constants::SENTIMENT_VNEGATIVE);
+    return ($this->sentiment === \RecastAI\Constants::SENTIMENT_VERY_NEGATIVE);
   }
 }

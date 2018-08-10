@@ -2,7 +2,7 @@
 
 namespace Tests\RecastAI;
 
-use RecastAI\Entity;
+use RecastAI\apis\Resources\Entity;
 
 class EntityTest extends \PHPUnit_Framework_TestCase
 {
@@ -21,7 +21,7 @@ class EntityTest extends \PHPUnit_Framework_TestCase
             'raw' => 'asparagus',
         ];
 
-        $this->assertInstanceOf('RecastAI\Entity', new Entity('ingredient', $data2));
+        $this->assertInstanceOf('RecastAI\apis\Resources\Entity', new Entity('ingredient', $data2));
     }
 
     public function testEntityClassShouldHaveAttributes()

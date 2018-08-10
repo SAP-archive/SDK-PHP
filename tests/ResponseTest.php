@@ -2,7 +2,7 @@
 
 namespace Tests\RecastAI;
 
-use RecastAI\Response;
+use RecastAI\apis\Resources\Response;
 
 class ResponseTest extends \PHPUnit_Framework_TestCase
 {
@@ -14,17 +14,17 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     public function testResponseClassWithAllOkay()
     {
         $jsonResult = self::jsonResponse();
-        $res = (Object)[ "body" => ($jsonResult) ];
-        $this->assertInstanceOf('RecastAI\Response', new Response($res));
+        $res = (Object)[ "body" => json_decode($jsonResult) ];
+        $this->assertInstanceOf('RecastAI\apis\Resources\Response', new Response($res->body->results));
     }
 
     public function testResponseClassAttributes()
     {
         $jsonResult = self::jsonResponse();
-        $res = (Object)[ "body" => ($jsonResult) ];
-        $result = json_decode($res->body);
+        $res = (Object)[ "body" => json_decode($jsonResult) ];
+        $result = $res->body;
 
-        $response = new Response($res);
+        $response = new Response($res->body->results);
 
         $count = count($response->entities, COUNT_RECURSIVE);
 
@@ -37,7 +37,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($response->version, $result->results->{'version'});
         $this->assertEquals($response->timestamp, $result->results->{'timestamp'});
         $this->assertEquals($count, 4);
-        $this->assertInstanceOf('RecastAI\Entity', $response->entities[0]);
+        $this->assertInstanceOf('RecastAI\apis\Resources\Entity', $response->entities[0]);
         $this->assertInternalType('array', $response->entities);
         $this->assertInternalType('array', $response->intents);
     }
@@ -45,10 +45,10 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     public function testResponseClassMethods()
     {
         $jsonResult = self::jsonResponse();
-        $res = (Object)[ "body" => ($jsonResult) ];
-        $result = json_decode($res->body);
+        $res = (Object)[ "body" => json_decode($jsonResult) ];
+        $result = $res->body;
 
-        $response = new Response($res);
+        $response = new Response($res->body->results);
 
         $all = count($response->all('location'));
         $get = $response->get('location');

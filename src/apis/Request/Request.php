@@ -23,6 +23,7 @@ class Request
   public function analyseText($text, $options = []) {
     $token = array_key_exists('token', $options) ? $options['token'] : $this->token;
     $language = array_key_exists('language', $options) ? $options['language'] : $this->language;
+    $proxy = array_key_exists('proxy', $options) ? $options['proxy'] : NULL;
 
     if (count($token) < 1) {
       throw new \Exception('Error: Parameter token is missing');
@@ -40,7 +41,7 @@ class Request
       $response = $client->request('POST', \RecastAI\Constants::REQUEST_ENDPOINT, [
         'headers' => $headers,
         'body' => $body
-      ]);
+      ], ['proxy' => $proxy]);
     } catch (\Exception $e) {
       throw new \Exception('Error: API is not accessible: ' . $e->getMessage());
     }
@@ -50,49 +51,27 @@ class Request
     return new \RecastAI\apis\Resources\Response($responseBody);
   }
 
-  public function analyseFile($file, $options = []) {
-    $token = array_key_exists('token', $options) ? $options['token'] : $this->token;
-    $language = array_key_exists('language', $options) ? $options['language'] : $this->language;
-
-    if (count($token) < 1) {
-      throw new \Exception('Error: Parameter token is missing');
-    }
-
-    $headers = ['Authorization' => "Token " . $token];
-
-    $client = new \GuzzleHttp\Client();
-
-    try {
-      $response = $client->request('POST', \RecastAI\Constants::REQUEST_ENDPOINT, [
-        'headers' => $headers,
-        'body' => $file
-      ]);
-    } catch (\Exception $e) {
-      throw new \Exception('Error: API is not accessible: ' . $e->getMessage());
-    }
-
-    $responseBody = json_decode($response->getBody()->getContents())->results;
-
-    return new \RecastAI\apis\Resources\Response($responseBody);
-  }
-
-  public function converseText($text, $options = []) {
+  public function converseText($text, $options = [], $memory = NULL, $log_level = 'info') {
     $token = array_key_exists('token', $options) ? $options['token'] : $this->token;
     $language = array_key_exists('language', $options) ? $options['language'] : $this->language;
     $conversation_token = array_key_exists('conversation_token', $options) ? $options['conversation_token'] : NULL;
-    $memory = array_key_exists('memory', $options) ? $options['memory'] : NULL;
+    $proxy = array_key_exists('proxy', $options) ? $options['proxy'] : NULL;
 
     if (count($token) < 1) {
       throw new \Exception('Error: Parameter token is missing');
     }
 
     $headers = ['Content-Type' => 'application/json', 'Authorization' => "Token " . $token];
-    $body = json_encode([
+    $body = [
       "text" => $text,
       "language" => $language,
       "conversation_token" => $conversation_token,
-      "memory" => $memory
-    ]);
+      "log_level" => $log_level,
+    ];
+		if ($memory) {
+			$body['memory'] = $memory;
+		}
+		$body = json_encode($body);
 
     $client = new \GuzzleHttp\Client();
 
@@ -100,7 +79,7 @@ class Request
       $response = $client->request('POST', \RecastAI\Constants::CONVERSE_ENDPOINT, [
         'headers' => $headers,
         'body' => $body
-      ]);
+      ], ['proxy' => $proxy]);
     } catch (\Exception $e) {
       throw new \Exception('Error: API is not accessible: ' . $e->getMessage());
     }
