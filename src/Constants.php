@@ -6,6 +6,7 @@ class Constants
 {
   const REQUEST_ENDPOINT      = "https://api.recast.ai/v2/request";
   const CONVERSE_ENDPOINT     = "https://api.recast.ai/v2/converse";
+  const DIALOG_ENDPOINT      = "https://api.recast.ai/build/v1/dialog";
   const CONVERSATION_ENDPOINT = "https://api.recast.ai/connect/v1/messages";
   const MESSAGE_ENDPOINT      = "https://api.recast.ai/connect/v1/conversations/:conversation_id/messages";
 

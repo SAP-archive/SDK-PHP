@@ -88,4 +88,40 @@ class Request
 
     return new \RecastAI\apis\Resources\Conversation($token, $responseBody);
   }
+
+  public function dialogText($text, $conversation_id, $options = []) {
+    $token = array_key_exists('token', $options) ? $options['token'] : $this->token;
+    $language = array_key_exists('language', $options) ? $options['language'] : $this->language;
+
+    if (count($token) < 1) {
+      throw new \Exception('Error: Parameter token is missing');
+    }
+
+    if (count($conversation_id) < 1) {
+      throw new \Exception('Error: Parameter conversation_id is missing');
+    }
+
+    $headers = ['Content-Type' => 'application/json', 'Authorization' => "Token " . $token];
+    $body = json_encode([
+      "message" => [
+        "type" => "text",
+        "content" => $text
+      ],
+      "language" => $language,
+      "conversation_id" => $conversation_id
+    ]);
+
+    $client = new \GuzzleHttp\Client();
+
+    try {
+      $response = $client->request('POST', \RecastAI\Constants::DIALOG_ENDPOINT, [
+        'headers' => $headers,
+        'body' => $body
+      ]);
+    } catch (\Exception $e) {
+      throw new \Exception('Error: API is not accessible: ' . $e->getMessage());
+    }
+
+    return json_decode($response->getBody()->getContents())->results;
+  }
 }
