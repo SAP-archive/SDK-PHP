@@ -1,12 +1,12 @@
 <?php
 
-namespace RecastAI;
+namespace Sapcai;
 
 require 'vendor/autoload.php';
 
 /**
  * Class Client
- * @package RecastAI
+ * @package Sapcai
  */
 class Client
 {

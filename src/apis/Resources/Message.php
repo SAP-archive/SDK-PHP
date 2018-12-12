@@ -1,24 +1,22 @@
 <?php
 
-namespace RecastAI\apis\Resources;
+namespace Sapcai\apis\Resources;
 
 /**
 * Class Conversation
-* @package RecastAI
+* @package Sapcai
 */
 class Message
 {
 
   public function __construct($token, $body)
   {
-    $this->token = $token;
-
     $response = json_decode($body);
 
     $this->content = $response->message->attachment->content;
     $this->type = $response->message->attachment->type;
     $this->conversationId = $response->message->conversation;
-    $this->recastToken = $token;
+    $this->token = $token;
     $this->chatId = $response->chatId;
     $this->senderId = $response->senderId;
     $this->attachment = $response->message->attachment;
@@ -49,7 +47,7 @@ class Message
     $client = new \GuzzleHttp\Client();
 
     try {
-      $response = $client->request('POST', str_replace(":conversation_id", $this->conversationId, \RecastAI\Constants::MESSAGE_ENDPOINT), [
+      $response = $client->request('POST', str_replace(":conversation_id", $this->conversationId, \Sapcai\Constants::MESSAGE_ENDPOINT), [
         'headers' => $headers,
         'body' => $body
       ]);

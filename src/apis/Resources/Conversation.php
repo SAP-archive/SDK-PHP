@@ -1,10 +1,10 @@
 <?php
 
-namespace RecastAI\apis\Resources;
+namespace Sapcai\apis\Resources;
 
 /**
 * Class Conversation
-* @package RecastAI
+* @package Sapcai
 */
 class Conversation
 {
@@ -93,7 +93,7 @@ class Conversation
 
   public function isPositive()
   {
-    return ($this->sentiment === \RecastAI\Constants::SENTIMENT_POSITIVE);
+    return ($this->sentiment === \Sapcai\Constants::SENTIMENT_POSITIVE);
   }
 
   /**
@@ -101,7 +101,7 @@ class Conversation
   */
   public function isNeutral()
   {
-    return ($this->sentiment === \RecastAI\Constants::SENTIMENT_NEUTRAL);
+    return ($this->sentiment === \Sapcai\Constants::SENTIMENT_NEUTRAL);
   }
 
   /**
@@ -109,7 +109,7 @@ class Conversation
   */
   public function isNegative()
   {
-    return ($this->sentiment === \RecastAI\Constants::SENTIMENT_NEGATIVE);
+    return ($this->sentiment === \Sapcai\Constants::SENTIMENT_NEGATIVE);
   }
 
   /**
@@ -117,7 +117,7 @@ class Conversation
   */
   public function isVPositive()
   {
-    return ($this->sentiment === \RecastAI\Constants::SENTIMENT_VERY_POSITIVE);
+    return ($this->sentiment === \Sapcai\Constants::SENTIMENT_VERY_POSITIVE);
   }
 
   /**
@@ -125,7 +125,7 @@ class Conversation
   */
   public function isVNegative()
   {
-    return ($this->sentiment === \RecastAI\Constants::SENTIMENT_VERY_NEGATIVE);
+    return ($this->sentiment === \Sapcai\Constants::SENTIMENT_VERY_NEGATIVE);
   }
 
   /**
@@ -160,7 +160,7 @@ class Conversation
     $client = new \GuzzleHttp\Client();
 
     try {
-      $response = $client->request('PUT', \RecastAI\Constants::CONVERSE_ENDPOINT, [
+      $response = $client->request('PUT', \Sapcai\Constants::CONVERSE_ENDPOINT, [
         'headers' => $headers,
         'body' => $body
       ]);
@@ -190,7 +190,7 @@ class Conversation
     $client = new \GuzzleHttp\Client();
 
     try {
-      $response = $client->request('PUT', \RecastAI\Constants::CONVERSE_ENDPOINT, [
+      $response = $client->request('PUT', \Sapcai\Constants::CONVERSE_ENDPOINT, [
         'headers' => $headers,
         'body' => $body
       ]);
@@ -216,7 +216,7 @@ class Conversation
     $client = new \GuzzleHttp\Client();
 
     try {
-      $response = $client->request('DELETE', \RecastAI\Constants::CONVERSE_ENDPOINT, [
+      $response = $client->request('DELETE', \Sapcai\Constants::CONVERSE_ENDPOINT, [
         'headers' => $headers,
         'body' => $body
       ]);
