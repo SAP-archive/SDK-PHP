@@ -20,7 +20,7 @@ Install the package using npm, as shown below:
 composer require sapcai/sdk-php
 ```
 
-You can now use the SDKin your code. All you need is your bot's token. In case you have enabled our versioning feature in the settings of your bot, you can refer to our [versioning documentation](https://cai.tools.sap/docs/concepts/versioning) to learn how to select the appropriate token for you versions and environments.
+You can now use the SDK in your code. All you need is your bot's token. In case you have enabled our versioning feature in the settings of your bot, you can refer to our [versioning documentation](https://cai.tools.sap/docs/concepts/versioning) to learn how to select the appropriate token for you versions and environments.
 
 Using the entire SDK:
 ```php
