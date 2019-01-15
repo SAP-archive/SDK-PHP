@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\RecastAI;
+namespace Tests\Sapcai;
 
-use RecastAI\Client;
-use RecastAI\Response;
+use Sapcai\Client;
+use Sapcai\Response;
 
 class ClientTest extends \PHPUnit_Framework_TestCase
 {
@@ -15,18 +15,18 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     public function testClientClassWithoutLanguage()
     {
         $token = 'TestToken';
-        $this->assertInstanceOf('RecastAI\Client', new Client($token, null));
+        $this->assertInstanceOf('Sapcai\Client', new Client($token, null));
     }
 
     public function testClientClassWithoutToken()
     {
         $language = 'en';
-        $this->assertInstanceOf('RecastAI\Client', new Client(null, $language));
+        $this->assertInstanceOf('Sapcai\Client', new Client(null, $language));
     }
 
     public function testClientClassWithoutTokenAndLanguage()
     {
-        $this->assertInstanceOf('RecastAI\Client', new Client());
+        $this->assertInstanceOf('Sapcai\Client', new Client());
     }
 
     public function testClientClassWithTokenAndLanguage()
@@ -34,7 +34,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $token = 'TestToken';
         $language = 'en';
 
-        $this->assertInstanceOf('RecastAI\Client', new Client($token, $language));
+        $this->assertInstanceOf('Sapcai\Client', new Client($token, $language));
     }
 
     public function testClientClassIfAttributesAreOkay()
@@ -54,7 +54,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $token = 'TestToken';
         $language = 'en';
 
-        $stub = $this->getMockBuilder('RecastAI\Client')
+        $stub = $this->getMockBuilder('Sapcai\Client')
             ->setConstructorArgs(array($token, $language))
             ->setMethods(['requestPrivate'])
             ->getMock();

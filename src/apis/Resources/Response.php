@@ -1,10 +1,10 @@
 <?php
 
-namespace RecastAI\apis\Resources;
+namespace Sapcai\apis\Resources;
 
 /**
 * Class Response
-* @package RecastAI
+* @package Sapcai
 */
 class Response
 {
@@ -26,7 +26,7 @@ class Response
 
     foreach ($response->entities as $key => $value) {
       foreach ($value as $i => $entity) {
-        $this->entities[] = new \RecastAI\apis\Resources\Entity($key, $entity);
+        $this->entities[] = new \Sapcai\apis\Resources\Entity($key, $entity);
       }
     }
 
@@ -94,7 +94,7 @@ class Response
   */
   public function isAssert()
   {
-    return ($this->act === \RecastAI\Constants::ACT_ASSERT);
+    return ($this->act === \Sapcai\Constants::ACT_ASSERT);
   }
 
   /**
@@ -102,7 +102,7 @@ class Response
   */
   public function isCommand()
   {
-    return ($this->act === \RecastAI\Constants::ACT_COMMAND);
+    return ($this->act === \Sapcai\Constants::ACT_COMMAND);
   }
 
   /**
@@ -110,7 +110,7 @@ class Response
   */
   public function isWhQuery()
   {
-    return ($this->act === \RecastAI\Constants::ACT_WH_QUERY);
+    return ($this->act === \Sapcai\Constants::ACT_WH_QUERY);
   }
 
   /**
@@ -118,7 +118,7 @@ class Response
   */
   public function isYnQuery()
   {
-    return ($this->act === \RecastAI\Constants::ACT_YN_QUERY);
+    return ($this->act === \Sapcai\Constants::ACT_YN_QUERY);
   }
 
   /**
@@ -128,7 +128,7 @@ class Response
   */
   public function isAbbreviation()
   {
-    if (strstr($this->type, \RecastAI\Constants::TYPE_ABBREVIATION)) {
+    if (strstr($this->type, \Sapcai\Constants::TYPE_ABBREVIATION)) {
       return (true);
     }
     return (false);
@@ -139,7 +139,7 @@ class Response
   */
   public function isEntity()
   {
-    if (strstr($this->type, \RecastAI\Constants::TYPE_ENTITY)) {
+    if (strstr($this->type, \Sapcai\Constants::TYPE_ENTITY)) {
       return (true);
     }
     return (false);
@@ -150,7 +150,7 @@ class Response
   */
   public function isDescription()
   {
-    if (strstr($this->type, \RecastAI\Constants::TYPE_DESCRIPTION)) {
+    if (strstr($this->type, \Sapcai\Constants::TYPE_DESCRIPTION)) {
       return (true);
     }
     return (false);
@@ -161,7 +161,7 @@ class Response
   */
   public function isHuman()
   {
-    if (strstr($this->type, \RecastAI\Constants::TYPE_HUMAN)) {
+    if (strstr($this->type, \Sapcai\Constants::TYPE_HUMAN)) {
       return (true);
     }
     return (false);
@@ -172,7 +172,7 @@ class Response
   */
   public function isLocation()
   {
-    if (strstr($this->type, \RecastAI\Constants::TYPE_LOCATION)) {
+    if (strstr($this->type, \Sapcai\Constants::TYPE_LOCATION)) {
       return (true);
     }
     return (false);
@@ -183,7 +183,7 @@ class Response
   */
   public function isNumber()
   {
-    if (strstr($this->type, \RecastAI\Constants::TYPE_NUMBER)) {
+    if (strstr($this->type, \Sapcai\Constants::TYPE_NUMBER)) {
       return (true);
     }
     return (false);
@@ -197,7 +197,7 @@ class Response
 
   public function isPositive()
   {
-    return ($this->sentiment === \RecastAI\Constants::SENTIMENT_POSITIVE);
+    return ($this->sentiment === \Sapcai\Constants::SENTIMENT_POSITIVE);
   }
 
   /**
@@ -205,7 +205,7 @@ class Response
   */
   public function isNeutral()
   {
-    return ($this->sentiment === \RecastAI\Constants::SENTIMENT_NEUTRAL);
+    return ($this->sentiment === \Sapcai\Constants::SENTIMENT_NEUTRAL);
   }
 
   /**
@@ -213,7 +213,7 @@ class Response
   */
   public function isNegative()
   {
-    return ($this->sentiment === \RecastAI\Constants::SENTIMENT_NEGATIVE);
+    return ($this->sentiment === \Sapcai\Constants::SENTIMENT_NEGATIVE);
   }
 
   /**
@@ -221,7 +221,7 @@ class Response
   */
   public function isVPositive()
   {
-    return ($this->sentiment === \RecastAI\Constants::SENTIMENT_VERY_POSITIVE);
+    return ($this->sentiment === \Sapcai\Constants::SENTIMENT_VERY_POSITIVE);
   }
 
   /**
@@ -229,6 +229,6 @@ class Response
   */
   public function isVNegative()
   {
-    return ($this->sentiment === \RecastAI\Constants::SENTIMENT_VERY_NEGATIVE);
+    return ($this->sentiment === \Sapcai\Constants::SENTIMENT_VERY_NEGATIVE);
   }
 }

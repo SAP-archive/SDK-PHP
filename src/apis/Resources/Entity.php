@@ -1,10 +1,10 @@
 <?php
 
-namespace RecastAI\apis\Resources;
+namespace Sapcai\apis\Resources;
 
 /**
  * Class Entity
- * @package RecastAI
+ * @package Sapcai
  */
 Class Entity
 {

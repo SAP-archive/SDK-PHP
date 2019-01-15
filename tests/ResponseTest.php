@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\RecastAI;
+namespace Tests\Sapcai;
 
-use RecastAI\apis\Resources\Response;
+use Sapcai\apis\Resources\Response;
 
 class ResponseTest extends \PHPUnit_Framework_TestCase
 {
@@ -15,7 +15,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     {
         $jsonResult = self::jsonResponse();
         $res = (Object)[ "body" => json_decode($jsonResult) ];
-        $this->assertInstanceOf('RecastAI\apis\Resources\Response', new Response($res->body->results));
+        $this->assertInstanceOf('Sapcai\apis\Resources\Response', new Response($res->body->results));
     }
 
     public function testResponseClassAttributes()
@@ -37,7 +37,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($response->version, $result->results->{'version'});
         $this->assertEquals($response->timestamp, $result->results->{'timestamp'});
         $this->assertEquals($count, 4);
-        $this->assertInstanceOf('RecastAI\apis\Resources\Entity', $response->entities[0]);
+        $this->assertInstanceOf('Sapcai\apis\Resources\Entity', $response->entities[0]);
         $this->assertInternalType('array', $response->entities);
         $this->assertInternalType('array', $response->intents);
     }

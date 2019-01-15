@@ -1,13 +1,12 @@
 {
-  "name": "recastai/sdk-php",
-  "description": "The official PHP SDK Recast.AI",
+  "name": "sapcai/sdk-php",
+  "description": "The official PHP SDK of SAP Conversational AI",
   "version": "4.0.0",
   "license": "MIT",
-  "homepage": "https://recast.ai",
+  "homepage": "https://cai.tools.sap",
   "authors": [
     {
-      "name": "Marian André",
-      "email": "marian.andre@recast.ai"
+      "name": "SAP CAI team"
     }
   ],
   "minimum-stability": "dev",
@@ -22,8 +21,8 @@
   },
   "autoload": {
     "psr-4": {
-      "RecastAI\\": "src/",
-      "Tests\\RecastAI\\": "tests/"
+      "Sapcai\\": "src/",
+      "Tests\\Sapcai\\": "tests/"
     }
   }
 }

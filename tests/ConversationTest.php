@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\RecastAI;
+namespace Tests\Sapcai;
 
-use RecastAI\apis\Resources\Conversation;
+use Sapcai\apis\Resources\Conversation;
 
 class ConversationTest extends \PHPUnit_Framework_TestCase
 {
@@ -16,7 +16,7 @@ class ConversationTest extends \PHPUnit_Framework_TestCase
         $token = 'TestToken';
         $jsonResult = self::jsonResponse();
         $res = (Object)[ "body" => ($jsonResult) ];
-        $this->assertInstanceOf('RecastAI\apis\Resources\Conversation', new Conversation($token, $res));
+        $this->assertInstanceOf('Sapcai\apis\Resources\Conversation', new Conversation($token, $res));
     }
 
     public function testConversationClassAttributes()

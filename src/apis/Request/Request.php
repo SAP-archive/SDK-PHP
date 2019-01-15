@@ -1,12 +1,12 @@
 <?php
 
-namespace RecastAI\apis\Request;
+namespace Sapcai\apis\Request;
 
 require 'vendor/autoload.php';
 
 /**
 * Class Request
-* @package RecastAI
+* @package Sapcai
 */
 class Request
 {
@@ -38,7 +38,7 @@ class Request
     $client = new \GuzzleHttp\Client();
 
     try {
-      $response = $client->request('POST', \RecastAI\Constants::REQUEST_ENDPOINT, [
+      $response = $client->request('POST', \Sapcai\Constants::REQUEST_ENDPOINT, [
         'headers' => $headers,
         'body' => $body
       ], ['proxy' => $proxy]);
@@ -48,7 +48,7 @@ class Request
 
     $responseBody = json_decode($response->getBody()->getContents())->results;
 
-    return new \RecastAI\apis\Resources\Response($responseBody);
+    return new \Sapcai\apis\Resources\Response($responseBody);
   }
 
   public function converseText($text, $options = [], $memory = NULL, $log_level = 'info') {
@@ -76,7 +76,7 @@ class Request
     $client = new \GuzzleHttp\Client();
 
     try {
-      $response = $client->request('POST', \RecastAI\Constants::CONVERSE_ENDPOINT, [
+      $response = $client->request('POST', \Sapcai\Constants::CONVERSE_ENDPOINT, [
         'headers' => $headers,
         'body' => $body
       ], ['proxy' => $proxy]);
@@ -86,6 +86,6 @@ class Request
 
     $responseBody = json_decode($response->getBody()->getContents())->results;
 
-    return new \RecastAI\apis\Resources\Conversation($token, $responseBody);
+    return new \Sapcai\apis\Resources\Conversation($token, $responseBody);
   }
 }
