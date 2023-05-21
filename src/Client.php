@@ -2,8 +2,6 @@
 
 namespace Sapcai;
 
-require 'vendor/autoload.php';
-
 /**
  * Class Client
  * @package Sapcai

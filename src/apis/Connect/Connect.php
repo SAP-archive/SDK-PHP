@@ -2,8 +2,6 @@
 
 namespace Sapcai\apis\Connect;
 
-require 'vendor/autoload.php';
-
 /**
 * Class Connect
 * @package Sapcai

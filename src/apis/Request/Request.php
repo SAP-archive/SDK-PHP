@@ -2,8 +2,6 @@
 
 namespace Sapcai\apis\Request;
 
-require 'vendor/autoload.php';
-
 /**
 * Class Request
 * @package Sapcai
